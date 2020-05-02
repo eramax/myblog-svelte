@@ -1,15 +1,16 @@
 <script>
-  import { Link } from "svelte-routing";
+  import { link } from "svelte-routing";
 
   export let posts = [];
   export let url = "";
 </script>
 
-<nav class="navlist postList w3-col s8 m7 l8 ">
+<nav class="fullhight navlist postList w3-col s8 m7 l8 ">
   {#each posts as post}
-    <Link
-      to={'/' + post[0]}
-      class={' w3-border-bottom w3-padding-small ' + (url == '/' + post[0] ? 'w3-blue-grey' : '')}>
+    <a
+      use:link
+      href={'/' + post[0]}
+      class={'w3-border-bottom w3-padding-small ' + (url == '/' + post[0] ? 'w3-blue-grey' : '')}>
 
       <img
         class="w3-col"
@@ -22,6 +23,6 @@
 
         <small>{new Date(post[1][1] * 1000).toDateString()}</small>
       </div>
-    </Link>
+    </a>
   {/each}
 </nav>

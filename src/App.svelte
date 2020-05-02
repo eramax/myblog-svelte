@@ -30,8 +30,8 @@
       <CatList {categories} />
       <PostList {url} {posts} />
     </div>
-    <div class="w3-green w3-col s12 m6 l7">
-      <main>
+    <div class="w3-col s12 m6 l7">
+      <main class="fullhight">
         <Route path="/">
           <Post slug="/" />
         </Route>

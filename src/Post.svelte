@@ -8,6 +8,16 @@
 </script>
 
 {#await promise then post}
-  <h1>{post.title}</h1>
-  <h1>{slug}</h1>
+  <article class=" w3-container">
+    <header class="w3-border-bottom">
+      <h1>
+        <b>{post.title}</b>
+      </h1>
+      <span>{new Date(post.date * 1000).toDateString()}</span>
+    </header>
+    <section class="w3-content">
+      {@html post.content}
+    </section>
+
+  </article>
 {/await}

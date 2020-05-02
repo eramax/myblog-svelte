@@ -1,0 +1,1 @@
+{"title": "Manjaro System boot logs", "content": "<p>You can reach system boot logs with</p>\n<pre><code data-enlighter-language=\"null\">journalctl -b\r\n</code></pre>\n<p> </p>\n", "slug": "manjaro-system-boot-logs", "date": 1523207473, "cats": [3]}

@@ -1,0 +1,1 @@
+{"title": "Send form data with files using curl", "content": "<pre><code data-enlighter-language=\"shell\">curl \\\r\n  -F \"userid=1\" \\\r\n  -F \"filecomment=This is an image file\" \\\r\n  -F \"image=@/home/user1/Desktop/test.jpg\" \\\r\n  localhost/uploader.php</code></pre>\n<p> </p>\n", "slug": "send-form-data-with-files-using-curl", "date": 1586105545, "cats": [3, 4]}

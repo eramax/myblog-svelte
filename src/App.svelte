@@ -3,22 +3,23 @@
   import CatList from "./CatList.svelte";
   import PostList from "./PostList.svelte";
   import Post from "./Post.svelte";
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount } from "svelte";
   import { httpGet } from "./db.js";
 
   let hideSidebar = false;
   let categories = [];
   let posts = [];
-  let url = "";
-
+  let selectedCategory = 0;
+  let selectedPost = "";
+  $: if (selectedPost) hideSidebar = true;
   onMount(async function() {
     const data = await httpGet("/assets/index.json");
-    categories = ["Home", ...data.cats];
+    categories = data.cats;
     posts = data.posts;
   });
 </script>
 
-<Router {url}>
+<Router>
   <div class="w3-row w3-theme wapper">
     <button
       class="w3-button w3-hide-medium w3-hide-large w3-display-topright"
@@ -27,16 +28,19 @@
     </button>
 
     <div class={'w3-col s12 m6 l5 ' + (hideSidebar ? 'w3-hide-small' : '')}>
-      <CatList {categories} />
-      <PostList {url} {posts} />
+      <CatList
+        {categories}
+        {selectedCategory}
+        select={id => (selectedCategory = id)} />
+      <PostList {posts} {selectedPost} {selectedCategory} />
     </div>
     <div class="w3-col s12 m6 l7">
       <main class="fullhight">
         <Route path="/">
-          <Post slug="/" />
+          <Post slug="/" updateMe={x => console.log()} />
         </Route>
         <Route path="/:slug" let:params>
-          <Post slug={params.slug} />
+          <Post slug={params.slug} updateMe={x => (selectedPost = x)} />
         </Route>
       </main>
     </div>

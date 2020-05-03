@@ -19,9 +19,9 @@
   {#await promise then post}
     <article class=" w3-container">
       <header class="w3-border-bottom">
-        <h1>
+        <h2>
           <b>{post.title}</b>
-        </h1>
+        </h2>
         <span>{new Date(post.date * 1000).toDateString()}</span>
       </header>
       <section class="w3-content">

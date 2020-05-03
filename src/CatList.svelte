@@ -12,11 +12,11 @@
   <h4 class="brand ">AHMED ESSAM</h4>
   <div class="w3-row ">
     {#each categories as cat}
-      <a
+      <article
         class={'w3-col w3-button w3-left-align w3-bar-item  ' + (selectedCategory == cat.id ? 'w3-deep-orange' : '')}
         on:click={() => select(cat.id)}>
         {cat.name}
-      </a>
+      </article>
     {/each}
   </div>
 </nav>

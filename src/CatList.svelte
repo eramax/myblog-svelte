@@ -4,12 +4,15 @@
   export let selectedCategory;
 </script>
 
-<nav class="fullhight navlist catList w3-col s4 m5 l4">
+<nav class="fullhight navlist catList w3-col s4 m5 l4 ">
   <img
     class="w3-col w3-circle"
     alt="Ahmed Essam"
     src="./assets/icons/me2.webp" />
-  <h4 class="brand ">AHMED ESSAM</h4>
+  <a href="/admin">
+    <h4 class="brand ">AHMED ESSAM</h4>
+  </a>
+
   <div class="w3-row ">
     {#each categories as cat}
       <article

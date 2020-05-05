@@ -1,6 +1,5 @@
 <script>
   import { link } from "svelte-routing";
-
   export let posts = [];
   export let selectedPost;
   export let selectedCategory;

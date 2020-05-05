@@ -3,8 +3,9 @@
   import CatList from "./CatList.svelte";
   import PostList from "./PostList.svelte";
   import Post from "./Post.svelte";
+  import Admin from "./Admin.svelte";
   import { onMount } from "svelte";
-  import { httpGet } from "./db.js";
+  import { httpGet } from "./helpers.js";
 
   let hideSidebar = false;
   let categories = [];
@@ -36,6 +37,9 @@
     </div>
     <div class="w3-col s12 m6 l7">
       <main class="fullhight">
+        <Route path="/admin">
+          <Admin />
+        </Route>
         <Route path="/">
           <Post slug="/" updateMe={x => console.log()} />
         </Route>

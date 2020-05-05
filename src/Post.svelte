@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { httpGet } from "./db.js";
+  import { httpGet } from "./helpers.js";
 
   export let slug;
   export let updateMe;

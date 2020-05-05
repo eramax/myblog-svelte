@@ -1,16 +1,19 @@
 <script>
   import { onMount } from "svelte";
-  import { httpGet } from "./helpers.js";
+  import { httpGet } from "../Lib/helpers.js";
 
   export let slug;
   export let updateMe;
   let promise = undefined;
-  $: {
-    if (slug && slug != "/") {
-      updateMe(slug);
+
+  $: reload(slug);
+
+  const reload = url => {
+    if (url && url != "/") {
+      updateMe(url);
       promise = httpGet("assets/posts/" + slug + ".json");
     }
-  }
+  };
 </script>
 
 {#if !promise}

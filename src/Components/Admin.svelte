@@ -1,8 +1,8 @@
 <script>
   import Jodit from "jodit";
   import { onMount } from "svelte";
-  import { createCommit } from "./github.js";
-  import { getFilename, getBlob, toDataURL } from "./helpers.js";
+  import { createCommit } from "../Lib/github.js";
+  import { getFilename, getBlob, toDataURL } from "../Lib/helpers.js";
   let editor;
   let area;
 

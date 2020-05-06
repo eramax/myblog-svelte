@@ -12,7 +12,9 @@
 
   async function submit() {
     let post = {
-      html: editor.value,
+      date: Date.now(),
+      cats: [ 0, 4 ],
+      content: editor.value,
       title: title,
       slug: undefined
     };

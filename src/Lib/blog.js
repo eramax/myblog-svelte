@@ -5,10 +5,11 @@ import { githubConfig } from './config.js';
 export const addPost = async (post) => {
 	console.log('add post');
 	let files = [];
-	if (!post.slug) post.slug = 'ahmed';
+
+	post.slug = `post-${post.date}`;
 
 	var container = document.createElement('div');
-	container.innerHTML = post.html;
+	container.innerHTML = post.content;
 
 	let images = container.getElementsByTagName('img');
 
@@ -20,10 +21,11 @@ export const addPost = async (post) => {
 		images[i].src = newimage.path;
 		files.push(newimage);
 	}
+	post.content = container.innerHTML;
 
 	let newpost = {
 		path: `${githubConfig.postdir}${post.slug}.json`.toLowerCase(),
-		data: await encodeFile(container.innerHTML)
+		data: await encodeFile(JSON.stringify(post))
 	};
 
 	files.push(newpost);

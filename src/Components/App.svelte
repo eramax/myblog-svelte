@@ -1,10 +1,11 @@
 <script>
   import { onMount } from "svelte";
   import { Route, Router } from "svelte-routing";
+  import { httpGet } from "../Lib/helpers.js";
+  import { addPost } from "../Lib/blog.js";
   import Sidebar from "./Sidebar.svelte";
   import Post from "./Post.svelte";
   import Admin from "./Admin.svelte";
-  import { httpGet } from "../Lib/helpers.js";
 
   let categories = [];
   let posts = [];
@@ -15,6 +16,11 @@
     categories = data.cats;
     posts = data.posts;
   });
+
+  const submitPost = async post => {
+    let tmp = { cats: categories, posts: posts };
+    posts = await addPost(post, tmp);
+  };
 </script>
 
 <Router>
@@ -22,7 +28,7 @@
     <Sidebar {categories} {posts} {selectedPost} />
     <main class="fullhight w3-col s12 m6 l7">
       <Route path="/admin">
-        <Admin />
+        <Admin {submitPost} />
       </Route>
       <Route path="/">
         <Post slug="/" updateMe={x => console.log()} />

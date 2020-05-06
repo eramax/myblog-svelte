@@ -1,69 +1,70 @@
 .wapper {
-    height: 100%;
+	height: 100%;
 }
 
 .fullhight {
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+	height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .navlist {
-    list-style: none;
-    padding: 5px;
-    text-transform: capitalize;
+	list-style: none;
+	padding: 5px;
+	text-transform: capitalize;
 }
 
 .catList {
-    background: #252a3a;
-    color: white;
+	background: #252a3a;
+	color: white;
 }
 
 .head {
-    background: #252a3a;
-    color: white;
+	background: #252a3a;
+	color: white;
 }
 
-.postList {}
+.postList {
+}
 
 .brand {
-    font-weight: bold;
-    text-align: center;
+	font-weight: bold;
+	text-align: center;
 }
 
 a {
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
+	cursor: pointer;
+	display: block;
+	text-decoration: none;
 }
 
 img {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 pre {
-    position: relative;
-    text-align: left;
-    box-sizing: border-box;
-    padding: 15px;
-    overflow: auto hidden;
-    white-space: pre;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    font-family: Menlo, monospace;
-    color: rgb(214, 222, 235);
-    background-color: rgb(1, 22, 39);
-    font-size: 14px;
-    margin-bottom: 32px;
-    margin-top: 32px;
-    border-radius: 10px;
+	position: relative;
+	text-align: left;
+	box-sizing: border-box;
+	padding: 15px;
+	overflow: auto hidden;
+	white-space: pre;
+	word-break: keep-all;
+	overflow-wrap: break-word;
+	font-family: Menlo, monospace;
+	color: rgb(214, 222, 235);
+	background-color: rgb(1, 22, 39);
+	font-size: 14px;
+	margin-bottom: 32px;
+	margin-top: 32px;
+	border-radius: 10px;
 }
 
 iframe {
-    width: 100%;
+	width: 100%;
 }
 
 main img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }

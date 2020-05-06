@@ -42,7 +42,7 @@
 <form class="w3-container w3-margin">
   <div class="w3-padding-16">
     <label class="w3-text-teal">
-      <b>Post Titel</b>
+      <b>Post title</b>
     </label>
     <input
       bind:value={title}

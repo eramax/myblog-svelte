@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { httpGet } from "../Lib/helpers.js";
-
+  import { githubConfig, API } from "../Lib//config.js";
   export let slug;
   export let updateMe;
   let promise = undefined;
@@ -11,7 +11,8 @@
   const reload = url => {
     if (url && url != "/") {
       updateMe(url);
-      promise = httpGet("assets/posts/" + slug + ".json");
+      url = `${API}${githubConfig.postdir}${slug}.json`.toLowerCase();
+      promise = httpGet(url);
     }
   };
 </script>

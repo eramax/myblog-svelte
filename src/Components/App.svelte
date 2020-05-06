@@ -3,6 +3,7 @@
   import { Route, Router } from "svelte-routing";
   import { httpGet } from "../Lib/helpers.js";
   import { addPost } from "../Lib/blog.js";
+  import { API, githubConfig } from "../Lib/config.js";
   import Sidebar from "./Sidebar.svelte";
   import Post from "./Post.svelte";
   import Admin from "./Admin.svelte";
@@ -12,7 +13,7 @@
   let selectedPost = "";
 
   onMount(async function() {
-    const data = await httpGet("/assets/index.json");
+    const data = await httpGet(`${API}${githubConfig.indexfile}`);
     categories = data.cats;
     posts = data.posts;
   });

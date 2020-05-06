@@ -12,8 +12,8 @@
 
   async function submit() {
     let post = {
-      date: Date.now(),
-      cats: [0, 4],
+      date: Date.now() / 1000,
+      cats: [0],
       content: editor.value,
       title: title,
       slug: undefined

@@ -1,16 +1,16 @@
 import { commit } from './github.js';
 import { getFilename, encodeImage, encodeFile, generateSlug } from './helpers.js';
-import { githubConfig } from './config.js';
+import { githubConfig, API } from './config.js';
 
 export const addPost = async (post, indexdb) => {
 	console.log('add post');
 	let files = [];
 
-	let uq = 0;
 	let slug = generateSlug(post.title);
+	/*let uq = 0;
 	while (slug in indexdb.posts) {
 		slug = `${slug}${++uq}`;
-	}
+	}*/
 
 	post.slug = slug;
 
@@ -24,7 +24,7 @@ export const addPost = async (post, indexdb) => {
 			path: `${githubConfig.imagedir}${getFilename(images[i].src)}`.toLowerCase(),
 			data: await encodeImage(images[i].src)
 		};
-		images[i].src = newimage.path;
+		images[i].src = `${API}${newimage.path}`;
 		files.push(newimage);
 	}
 	post.content = container.innerHTML;
@@ -37,7 +37,7 @@ export const addPost = async (post, indexdb) => {
 	files.push(newpost);
 
 	// update the index file
-	let postindexentry = [ post.slug, post.title, post.data, post.cats ];
+	let postindexentry = [ post.slug, post.title, post.date, post.cats ];
 	indexdb.posts = [ postindexentry, ...indexdb.posts ];
 	let indexfile = {
 		path: githubConfig.indexfile,

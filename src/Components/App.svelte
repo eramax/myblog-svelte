@@ -27,7 +27,7 @@
 <Router>
   <div class="w3-row w3-theme wapper">
     <Sidebar {categories} {posts} {selectedPost} />
-    <main class="fullhight w3-col s12 m6 l7">
+    <main class="fullhight w3-col s12 m6 l8">
       <Route path="/admin">
         <Admin {submitPost} />
       </Route>

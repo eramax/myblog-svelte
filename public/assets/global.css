@@ -14,6 +14,10 @@
 	text-transform: capitalize;
 }
 
+.navlist a {
+	display: block;
+	text-decoration: none;
+}
 .catList {
 	background: #252a3a;
 	color: white;
@@ -34,8 +38,6 @@
 
 a {
 	cursor: pointer;
-	display: block;
-	text-decoration: none;
 }
 
 img {
@@ -67,4 +69,15 @@ iframe {
 main img {
 	max-width: 100%;
 	height: auto;
+}
+@media (min-width: 1205px) {
+	.blur {
+		color: transparent;
+		text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	}
+
+	.blur:hover {
+		color: black;
+		text-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+	}
 }

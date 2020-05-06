@@ -15,14 +15,14 @@
   <img src="./assets/icons/menu.webp" alt="sidebar" />
 </button>
 
-<nav class={'w3-col s12 m6 l5 ' + (hideSidebar ? 'w3-hide-small' : '')}>
+<nav class={'w3-col s12 m6 l4 blur ' + (hideSidebar ? 'w3-hide-small' : '')}>
   <section class="fullhight navlist catList w3-col s4 m5 l4 ">
     <img
       class="w3-col w3-circle"
       alt="Ahmed Essam"
       src="./assets/icons/me2.webp" />
     <a use:link href="/admin">
-      <h4 class="brand ">AHMED ESSAM</h4>
+      <h6 class="brand ">AHMED ESSAM</h6>
     </a>
 
     <div class="w3-row ">

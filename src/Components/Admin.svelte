@@ -37,33 +37,36 @@
   });
 </script>
 
-<div class="w3-container w3-teal">
-  <h2>New Post</h2>
-</div>
+<article class="w3-container">
+  <header class="w3-border-bottom w3-teal">
+    <h2>New Post</h2>
+  </header>
+  <section class="w3-content">
+    <form class="w3-row w3-margin">
+      <div>
+        <label class="w3-text-teal">
+          <b>Post title</b>
+        </label>
+        <input
+          bind:value={title}
+          class="w3-input w3-border w3-light-grey "
+          type="text" />
+      </div>
 
-<form class="w3-container w3-margin">
-  <div class="w3-padding-16">
-    <label class="w3-text-teal">
-      <b>Post title</b>
-    </label>
-    <input
-      bind:value={title}
-      class="w3-input w3-border w3-light-grey "
-      type="text" />
-  </div>
+      <textarea bind:this={area} />
+      <div class="w3-padding-16">
+        <label class="w3-text-teal">
+          <b>Github access token</b>
+        </label>
+        <input
+          class="w3-input w3-border w3-light-grey "
+          bind:value={access_token}
+          type="text" />
+      </div>
 
-  <textarea bind:this={area} />
-  <div class="w3-padding-16">
-    <label class="w3-text-teal">
-      <b>Github access token</b>
-    </label>
-    <input
-      class="w3-input w3-border w3-light-grey "
-      bind:value={access_token}
-      type="text" />
-  </div>
-
-  <button on:click|preventDefault={submit} class="w3-btn w3-blue-grey">
-    Submit
-  </button>
-</form>
+      <button on:click|preventDefault={submit} class="w3-btn w3-blue-grey">
+        Submit
+      </button>
+    </form>
+  </section>
+</article>

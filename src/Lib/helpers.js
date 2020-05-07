@@ -62,6 +62,20 @@ const jsonEncode = (str) => {
 	return str;
 };
 
+export const getFileExtension = (src) => {
+	return src.split('.').pop();
+};
+
+export const generateId = (length) => {
+	var result = '';
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+};
+
 export const generateSlug = (str) => {
 	str = String(str).toString();
 	str = str.replace(/^\s+|\s+$/g, ''); // trim

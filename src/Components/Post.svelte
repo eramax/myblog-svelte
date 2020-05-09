@@ -3,6 +3,7 @@
   import { httpGet } from "../Lib/helpers.js";
   import { githubConfig, API } from "../Lib/config.js";
   import { LoadPost, selectedPost } from "../Lib/store.js";
+  import { fly } from "svelte/transition";
 
   export let slug;
   let promise = undefined;
@@ -15,10 +16,8 @@
 </script>
 
 {#if promise}
-  {#await promise}
-    <h3>Loading...</h3>
-  {:then post}
-    <article class=" w3-container">
+  {#await promise then post}
+    <article class=" w3-container" in:fly={{ x: -200, y: 0 }}>
       <header class="w3-border-bottom">
         <h2>
           <b>{post.title}</b>
@@ -29,7 +28,5 @@
         {@html post.content}
       </section>
     </article>
-  {:catch error}
-    <h3>Error</h3>
   {/await}
 {/if}

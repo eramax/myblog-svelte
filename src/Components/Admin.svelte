@@ -1,8 +1,8 @@
 <script>
   import Jodit from "jodit";
   import { onMount } from "svelte";
+  import { BlogStore } from "../Lib/store.js";
 
-  export let submitPost;
   let editor;
   let area;
   let title;
@@ -12,13 +12,13 @@
 
   async function submit() {
     let post = {
-      date: Date.now() / 1000,
+      date: Math.round(Date.now()) / 1000,
       cats: [0],
       content: editor.value,
       title: title,
       slug: undefined
     };
-    await submitPost(post);
+    await BlogStore.addPost(post);
   }
   onMount(() => {
     editor = Jodit.make(area, {
@@ -65,7 +65,7 @@
       </div>
 
       <button on:click|preventDefault={submit} class="w3-btn w3-blue-grey">
-        Submit
+        Save
       </button>
     </form>
   </section>

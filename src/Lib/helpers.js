@@ -13,7 +13,8 @@ export function httpPut(path, data) {
 async function req(path, method = 'GET', data) {
 	const res = await fetch(path, {
 		method,
-		credentials: 'same-origin',
+		cache: 'no-cache',
+		//credentials: 'same-origin',
 		body: data && JSON.stringify(data)
 	});
 	return await res.json();

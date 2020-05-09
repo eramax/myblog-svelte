@@ -1,6 +1,6 @@
 export const githubConfig = {
 	user: 'eramax',
-	repoName: 'test10',
+	repoName: 'myBlogStorage',
 	branch: 'master',
 	imagedir: 'public/assets/images/',
 	postdir: 'public/assets/posts/',

@@ -1,12 +1,10 @@
 <script>
   import { link } from "svelte-routing";
+  import { BlogStore, selectedPost } from "../Lib/store.js";
 
   export let hideSidebar = false;
-  export let categories = [];
-  export let posts = [];
-  export let selectedPost;
   let selectedCategory = 0;
-  $: if (selectedPost) hideSidebar = true;
+  $: if ($selectedPost) hideSidebar = true;
 </script>
 
 <button
@@ -26,7 +24,7 @@
     </a>
 
     <div class="w3-row ">
-      {#each categories as cat}
+      {#each $BlogStore.cats as cat}
         <article
           class={'w3-col w3-button w3-left-align w3-bar-item  ' + (selectedCategory == cat.id ? 'w3-deep-orange' : '')}
           on:click={() => (selectedCategory = cat.id)}>
@@ -37,12 +35,12 @@
   </section>
 
   <section class="fullhight navlist postList w3-col s8 m7 l8 ">
-    {#each posts as post}
+    {#each $BlogStore.posts as post}
       {#if post[3].includes(selectedCategory)}
         <a
           use:link
           href={'/' + post[0]}
-          class={'w3-border-bottom w3-padding-small ' + (selectedPost == post[0] ? 'w3-blue-grey' : '')}>
+          class={'w3-border-bottom w3-padding-small ' + ($selectedPost == post[0] ? 'w3-blue-grey' : '')}>
 
           <img
             class="w3-col"
@@ -52,7 +50,6 @@
 
           <div class="w3-rest">
             <b class="w3-row">{post[1]}</b>
-
             <small>{new Date(post[2] * 1000).toDateString()}</small>
           </div>
         </a>

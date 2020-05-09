@@ -1,26 +1,23 @@
 <script>
   import { onMount } from "svelte";
   import { httpGet } from "../Lib/helpers.js";
-  import { githubConfig, API } from "../Lib//config.js";
+  import { githubConfig, API } from "../Lib/config.js";
+  import { LoadPost, selectedPost } from "../Lib/store.js";
+
   export let slug;
-  export let updateMe;
   let promise = undefined;
+  $: load(slug);
 
-  $: reload(slug);
-
-  const reload = url => {
-    if (url && url != "/") {
-      updateMe(url);
-      url = `${API}${githubConfig.postdir}${slug}.json`.toLowerCase();
-      promise = httpGet(url);
-    }
+  const load = url => {
+    selectedPost.set(slug);
+    promise = LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
   };
 </script>
 
-{#if !promise}
-  <h3>Please select a post</h3>
-{:else}
-  {#await promise then post}
+{#if promise}
+  {#await promise}
+    <h3>Loading...</h3>
+  {:then post}
     <article class=" w3-container">
       <header class="w3-border-bottom">
         <h2>
@@ -32,5 +29,7 @@
         {@html post.content}
       </section>
     </article>
+  {:catch error}
+    <h3>Error</h3>
   {/await}
 {/if}

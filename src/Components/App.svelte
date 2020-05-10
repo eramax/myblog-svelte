@@ -6,7 +6,7 @@
 
   import Sidebar from "./Sidebar.svelte";
   import Post from "./Post.svelte";
-  import Admin from "./Admin.svelte";
+  import Editor from "./Editor.svelte";
 
   onMount(async function() {
     await LoadIndex(`${API}${githubConfig.indexfile}`);
@@ -17,8 +17,11 @@
   <div class="w3-row w3-theme wapper">
     <Sidebar />
     <main class="fullhight w3-col s12 m6 l8">
-      <Route path="/admin">
-        <Admin />
+      <Route path="/editor" let:params>
+        <Editor />
+      </Route>
+      <Route path="/editor/:slug" let:params>
+        <Editor slug={params.slug} />
       </Route>
       <Route path="/">
         <h3>Please select a post</h3>

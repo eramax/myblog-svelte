@@ -1,9 +1,9 @@
 <script>
   import { onMount } from "svelte";
-  import { httpGet } from "../Lib/helpers.js";
   import { githubConfig, API } from "../Lib/config.js";
   import { LoadPost, selectedPost } from "../Lib/store.js";
   import { fly } from "svelte/transition";
+  import { link } from "svelte-routing";
 
   export let slug;
   let promise = undefined;
@@ -23,6 +23,7 @@
           <b>{post.title}</b>
         </h2>
         <span>{new Date(post.date * 1000).toDateString()}</span>
+        <a use:link href={`/editor/${post.slug}`}>Edit</a>
       </header>
       <section class="w3-content">
         {@html post.content}

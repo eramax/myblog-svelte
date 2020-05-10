@@ -18,9 +18,10 @@ export const LoadPost = async (url) => {
 
 export const BlogStore = {
 	subscribe: blog.subscribe,
-	addPost: async (post) => {
-		console.log('add post');
+	savePost: async (post) => {
+		console.log('save post');
 		let files = [];
+		console.table(post);
 		if (!post.slug) post.slug = `${generateSlug(post.title)}${generateId(4)}`.toLowerCase();
 
 		var container = document.createElement('div');
@@ -28,6 +29,9 @@ export const BlogStore = {
 
 		let images = container.getElementsByTagName('img');
 		for (let i = 0; i < images.length; i++) {
+			// skip images already uploaded before (used when edit a post)
+			if (images[i].src.includes(API)) continue;
+
 			let newName = `${Date.now() / 1000}${generateId(5)}.${getFileExtension(images[i].src)}`;
 			let newimage = {
 				path: `${githubConfig.imagedir}${newName}`.toLowerCase(),
@@ -48,7 +52,11 @@ export const BlogStore = {
 		// update the index file
 		let postindexentry = [ post.slug, post.title, post.date, post.cats ];
 		let items = get(BlogStore);
-		let indexdb = { cats: items.cats, posts: [ postindexentry, ...items.posts ] };
+		items.posts = items.posts.filter((a) => a[0] !== post.slug);
+		items.posts = [ postindexentry, ...items.posts ];
+		items.posts.sort((a, b) => a[2] > b[2]);
+		let indexdb = { cats: items.cats, posts: items.posts };
+
 		let indexfile = {
 			path: githubConfig.indexfile,
 			data: await encodeFile(JSON.stringify(indexdb))
@@ -56,21 +64,27 @@ export const BlogStore = {
 		files.push(indexfile);
 
 		console.log(files);
-		console.log('new', indexdb);
-		await commit(files, `New post added: ${post.title}`);
+		await commit(files, `SAVE POST: ${post.title}`);
 		blog.set(indexdb);
 	},
-	updatePost: (slug, updatedpost) => {
-		blog.update((items) => {
-			const current = [ ...items ];
-			const idx = current.findIndex((i) => i.slug === slug);
-			current[idx] = updatedpost;
-			return current;
-		});
-	},
-	removeMeetup: (slug) => {
-		blog.update((items) => {
-			return items.filter((i) => i.slug !== slug);
-		});
+	delPost: async (slug) => {
+		if (!slug) return;
+		console.log('delete post');
+
+		let files = [];
+		let items = get(BlogStore);
+		let post = items.posts.filter((a) => a[0] === slug)[0];
+		items.posts = items.posts.filter((a) => a[0] !== slug);
+		items.posts.sort((a, b) => a[2] > b[2]);
+		let indexdb = { cats: items.cats, posts: items.posts };
+
+		let indexfile = {
+			path: githubConfig.indexfile,
+			data: await encodeFile(JSON.stringify(indexdb))
+		};
+		files.push(indexfile);
+		console.log(files);
+		await commit(files, `DELETE POST: ${post[1]}`);
+		blog.set(indexdb);
 	}
 };

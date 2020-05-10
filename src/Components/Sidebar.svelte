@@ -18,8 +18,8 @@
     <img
       class="w3-col w3-circle"
       alt="Ahmed Essam"
-      src="./assets/icons/me2.webp" />
-    <a use:link href="/admin">
+      src="/assets/icons/me2.webp" />
+    <a use:link href="/editor">
       <h6 class="brand ">AHMED ESSAM</h6>
     </a>
 

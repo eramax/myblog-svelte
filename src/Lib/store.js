@@ -28,13 +28,15 @@ export const BlogStore = {
 		container.innerHTML = post.content;
 
 		let images = container.getElementsByTagName('img');
+		let dt = new Date(post.date * 1000);
+
 		for (let i = 0; i < images.length; i++) {
 			// skip images already uploaded before (used when edit a post)
 			if (images[i].src.includes(API)) continue;
 
-			let newName = `${Date.now() / 1000}${generateId(5)}.${getFileExtension(images[i].src)}`;
+			let newName = `${post.date}${generateId(5)}.${getFileExtension(images[i].src)}`;
 			let newimage = {
-				path: `${githubConfig.imagedir}${newName}`.toLowerCase(),
+				path: `${githubConfig.imagedir}${dt.getFullYear()}/${dt.getMonth()}/${newName}`.toLowerCase(),
 				data: await encodeImage(images[i].src)
 			};
 			images[i].src = `${API}${newimage.path}`;

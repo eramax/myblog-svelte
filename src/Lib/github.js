@@ -1,5 +1,5 @@
 import { githubConfig } from './config.js';
-import Octokat from 'octokat';
+import Octokat from  'octokat';
 
 export const commit = async (files, commitMessage) => {
 	try {

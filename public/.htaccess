@@ -1,4 +1,5 @@
 Header set Cache-Control "max-age=2628000, public"
 
-RewriteCond %{REQUEST_URI} !^/assets [NC]
+RewriteRule ^(uploads/.*) https://raw.githubusercontent.com/eramax/myBlogStorage/master/public/$1 [L]
+#RewriteCond %{REQUEST_URI} !^/assets [NC]
 RewriteRule ^([^/]+)/?$ index.html [L]

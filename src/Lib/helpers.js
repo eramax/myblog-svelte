@@ -25,7 +25,7 @@ export const getBlob = async (url) => {
 	return await res.blob();
 };
 
-export const toDataURL = (url) =>
+export const getBase64 = (url) =>
 	fetch(url).then((response) => response.blob()).then(
 		(blob) =>
 			new Promise((resolve, reject) => {
@@ -46,11 +46,9 @@ export function uuidv4() {
 export const getFilename = (path) => path.replace(/^.*[\\\/]/, '').toLowerCase();
 
 export const encodeFile = (data) => btoa(jsonEncode(data));
-export const encodeImage = async (src) => {
-	let base64 = await toDataURL(src);
-	base64 = base64.replace(/^data:image\/[a-z]+;base64,/, '');
-	return base64;
-};
+export const encodeImage = (base64) => base64.replace(/^data:image\/[a-z]+;base64,/, '');
+
+export const base64Extension = (base64) => base64.split(';')[0].split('/')[1];
 
 const jsonEncode = (str) => {
 	str = str.replace(/[^\x00-\x7F]/g, function(char) {

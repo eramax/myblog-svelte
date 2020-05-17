@@ -17,7 +17,7 @@
 
   async function save() {
     post = {
-      date: (post && post.date) || Math.floor(Date.now()) / 1000,
+      date: (post && post.date) || Math.floor(Date.now() / 1000),
       cats: cats || [0],
       content: editor.value,
       title: title,

@@ -1,7 +1,16 @@
 import { writable, get } from 'svelte/store';
 import { httpGet } from './helpers.js';
 import { commit } from './github.js';
-import { encodeImage, encodeFile, generateSlug, generateId, getFileExtension } from './helpers.js';
+import {
+	encodeImage,
+	encodeFile,
+	generateSlug,
+	generateId,
+	getFileExtension,
+	base64Extension,
+	getBase64
+} from './helpers.js';
+
 import { githubConfig, API } from './config.js';
 
 const blog = writable({ posts: [], cats: [] });
@@ -34,10 +43,17 @@ export const BlogStore = {
 			// skip images already uploaded before (used when edit a post)
 			if (images[i].src.includes(API)) continue;
 
-			let newName = `${post.date}${generateId(5)}.${getFileExtension(images[i].src)}`;
+			let base64 = '';
+			if (images[i].src.includes('base64')) base64 = images[i].src;
+			else base64 = await getBase64(images[i].src);
+
+			let extension = base64Extension(base64);
+			let encodebase64 = encodeImage(base64);
+
+			let newName = `${post.date}${generateId(5)}.${extension}`;
 			let newimage = {
 				path: `${githubConfig.imagedir}${dt.getFullYear()}/${dt.getMonth()}/${newName}`.toLowerCase(),
-				data: await encodeImage(images[i].src)
+				data: encodebase64
 			};
 			images[i].src = `${API}${newimage.path}`;
 			files.push(newimage);

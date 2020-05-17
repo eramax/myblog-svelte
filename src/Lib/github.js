@@ -1,5 +1,5 @@
 import { githubConfig } from './config.js';
-import Octokat from  'octokat';
+import Octokat from 'octokat';
 
 export const commit = async (files, commitMessage) => {
 	try {
@@ -33,8 +33,8 @@ export const commit = async (files, commitMessage) => {
 		});
 
 		main.update({ sha: commit.sha });
-		console.log('Posted');
-		alert('Posted');
+		console.log('Finished');
+		alert('Finished');
 	} catch (err) {
 		console.error(err);
 	}

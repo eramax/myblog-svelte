@@ -14,16 +14,20 @@
   let area;
   let title;
   let cats = [0];
+  let newCat = "";
 
   async function save() {
-    post = {
-      date: (post && post.date) || Math.floor(Date.now() / 1000),
-      cats: cats || [0],
-      content: editor.value,
-      title: title,
-      slug: (post && post.slug) || undefined
-    };
-    await BlogStore.savePost(post);
+    if (editor.value && cats && title && access_token) {
+      post = {
+        date: (post && post.date) || Math.floor(Date.now() / 1000),
+        cats: cats || [0],
+        content: editor.value,
+        title: title,
+        slug: (post && post.slug) || undefined
+      };
+      if (newCat) post.cats.append(BlogStore.addCategory(newCat));
+      await BlogStore.savePost(post);
+    }
   }
 
   onMount(async () => {
@@ -68,20 +72,29 @@
     </div>
     <textarea bind:this={area} />
 
-    <div class="w3-row w3-card w3-padding-16 ">
-      <header class="w3-container w3-light-grey">
-        <h3>Tags</h3>
-      </header>
-      {#each $BlogStore.cats as cat}
-        <div class="w3-col m4 ">
-          <input
-            class="w3-check"
-            type="checkbox"
-            bind:group={cats}
-            value={cat.id} />
-          <label>{cat.name}</label>
-        </div>
-      {/each}
+    <div class="w3-row w3-padding-16">
+      <label class="w3-text-teal">
+        <b>Tags</b>
+      </label>
+      <div class="w3-row w3-padding-16">
+        {#each $BlogStore.cats as cat}
+          <div class="w3-col m4 ">
+            <input
+              class="w3-check"
+              type="checkbox"
+              bind:group={cats}
+              value={cat.id} />
+            <label>{cat.name}</label>
+          </div>
+        {/each}
+      </div>
+      <label class="w3-text-teal">
+        <b>New Tag</b>
+      </label>
+      <input
+        class="w3-input w3-border w3-light-grey"
+        type="text"
+        bind:value={newCat} />
     </div>
 
     <div class="w3-row w3-padding-16">

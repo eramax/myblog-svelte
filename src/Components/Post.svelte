@@ -25,7 +25,7 @@
         <span>{new Date(post.date * 1000).toDateString()}</span>
         <a use:link href={`/editor/${post.slug}`}>Edit</a>
       </header>
-      <section class="w3-content">
+      <section class="w3-main w3-padding-16">
         {@html post.content}
       </section>
     </article>

@@ -7,7 +7,7 @@
 
   export let slug = undefined;
   let post = undefined;
-  let access_token = localStorage.getItem("access_token");
+  let access_token = localStorage.getItem("access_token") || "";
   $: localStorage.setItem("access_token", access_token);
 
   let editor;
@@ -18,14 +18,17 @@
 
   async function save() {
     if (editor.value && cats && title && access_token) {
+      if (newCat) {
+        let catId = BlogStore.addCategory(newCat);
+        cats.indexOf(catId) === -1 && cats.push(catId);
+      }
       post = {
         date: (post && post.date) || Math.floor(Date.now() / 1000),
         cats: cats || [0],
         content: editor.value,
         title: title,
-        slug: (post && post.slug) || undefined
+        slug: (post && post.slug) || undefined,
       };
-      if (newCat) post.cats.append(BlogStore.addCategory(newCat));
       await BlogStore.savePost(post);
     }
   }
@@ -38,11 +41,11 @@
       defaultActionOnPaste: "insert_clear_html",
       height: "60vh",
       uploader: {
-        insertImageAsBase64URI: true
+        insertImageAsBase64URI: true,
       },
       events: {
-        change: function(n) {}
-      }
+        change: function (n) {},
+      },
     });
     if (slug) {
       post = await LoadPost(`${API}${githubConfig.postdir}${slug}.json`);

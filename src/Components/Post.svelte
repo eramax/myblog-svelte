@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from "svelte";
   import { githubConfig, API } from "../Lib/config.js";
   import { LoadPost, selectedPost } from "../Lib/store.js";
   import { fly } from "svelte/transition";

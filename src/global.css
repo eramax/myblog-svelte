@@ -1,0 +1,83 @@
+.wapper {
+	height: 100%;
+}
+
+.fullhight {
+	height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.navlist {
+	list-style: none;
+	padding: 5px;
+	text-transform: capitalize;
+}
+
+.navlist a {
+	display: block;
+	text-decoration: none;
+}
+.catList {
+	background: #252a3a;
+	color: white;
+}
+
+.head {
+	background: #252a3a;
+	color: white;
+}
+
+.postList {
+}
+
+.brand {
+	font-weight: bold;
+	text-align: center;
+}
+
+a {
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+}
+
+pre {
+	position: relative;
+	text-align: left;
+	box-sizing: border-box;
+	padding: 15px;
+	overflow: auto hidden;
+	white-space: pre;
+	word-break: keep-all;
+	overflow-wrap: break-word;
+	font-family: Menlo, monospace;
+	color: rgb(214, 222, 235);
+	background-color: rgb(1, 22, 39);
+	font-size: 14px;
+	margin-bottom: 32px;
+	margin-top: 32px;
+	border-radius: 10px;
+}
+
+iframe {
+	width: 100%;
+}
+
+main img {
+	max-width: 100%;
+	height: auto;
+}
+@media (min-width: 1205px) {
+	.blur {
+		color: transparent;
+		text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	}
+
+	.blur:hover {
+		color: black;
+		text-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+	}
+}

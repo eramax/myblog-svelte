@@ -16,7 +16,15 @@ const config = {
 		ssr: false,
 		adapter: adapter({
 			fallback: 'index.html'
-		})
+		}),
+		vite: {
+			ssr: {
+				target:  'webworker'
+			},
+			optimizeDeps: {
+			  include: ['@toast-ui/editor']
+			}
+		}
 	}
 };
 

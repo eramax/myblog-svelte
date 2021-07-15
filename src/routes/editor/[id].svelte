@@ -10,7 +10,6 @@
 	import { BlogStore } from '../../Lib/store.js';
 	import { githubConfig, API } from '../../Lib/config.js';
 	import { LoadPost } from '../../Lib/store.js';
-	import MultiSelect from '../../components/MultiSelect.svelte';
 	import 'jodit/build/jodit.min.css';
 
 	export let slug = 'new';
@@ -22,8 +21,8 @@
 	let area;
 	let title;
 	let cats = [0];
+
 	let newCat = '';
-	$: console.log("cats",cats);
 
 	async function save() {
 		if (editor.value && cats && title && access_token) {
@@ -41,6 +40,7 @@
 			await BlogStore.savePost(post);
 		}
 	}
+
 
 	onMount(async () => {
 		editor = Jodit.make(area, {
@@ -93,15 +93,17 @@
 			<div class="w-32">
 				<label class="block text-gray-500 font-bold mb-1 pr-4" for="title"> Tags </label>
 			</div>
-			{#if $BlogStore.cats.length > 0}
-				<div class="w-full">
-					<MultiSelect id="tags" bind:value={cats}>
-						{#each $BlogStore.cats as cat}
-							<option value={cat.id}>{cat.name}</option>
-						{/each}
-					</MultiSelect>
-				</div>
-			{/if}
+			<div class="block mt-2">
+			{#each $BlogStore.cats as cat}
+			<div>
+				<label class="inline-flex items-center">
+				  <input bind:group={cats} value={cat.id} type="checkbox" class="form-checkbox" checked>
+				  <span class="ml-2">{cat.name}</span>
+				</label>
+			  </div>
+
+		  {/each}
+		</div>
 		</div>
 
 		<div class="w-full flex mb-6">
@@ -156,3 +158,5 @@
 		</div>
 	</form>
 </section>
+
+

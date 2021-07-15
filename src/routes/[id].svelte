@@ -1,9 +1,10 @@
 <script context="module">
     import { githubConfig, API } from "../Lib/config.js";
-    import { LoadPost, selectedPost } from "../Lib/store.js";
+    import { LoadPost, selectedPost, showMenu } from "../Lib/store.js";
     export async function load(ctx) {
         let slug = ctx.page.params.id;
         selectedPost.set(slug);
+        showMenu.set(false);
         let promise = LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
         return { props: { promise }}
     }
@@ -11,7 +12,9 @@
 <script>
     import { fly } from "svelte/transition";
     import '../global.css'
+
     export let promise;
+
 </script>
 
 <svelte:head>

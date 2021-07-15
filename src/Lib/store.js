@@ -12,8 +12,10 @@ import {
 
 import { githubConfig, API } from './config.js'
 
+
 const blog = writable({ posts: [], cats: [] })
 export const selectedPost = writable('')
+export const showMenu = writable(false)
 
 export const LoadIndex = async (url) => {
   const data = await httpGet(url)

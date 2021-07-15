@@ -1713,6 +1713,11 @@ svelte-preprocess@^4.7.4:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
+svelte-select@^4.2.6:
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/svelte-select/-/svelte-select-4.2.6.tgz#ecfe8ce3986b0ca9c2e91e179bf073c33c8635b0"
+  integrity sha512-Vg5l3CohyT7FOBaLXAm5+nXTDWyE2X3JmD2QesvzMD38KT04FfM2KOpwMaNNO4VZcJAahldW7tDa1VGibXRyeQ==
+
 svelte@^3.38.3:
   version "3.38.3"
   resolved "https://registry.npmjs.org/svelte/-/svelte-3.38.3.tgz"

@@ -1,5 +1,5 @@
 {
-	"name": "svelte-kit-pokedex",
+	"name": "svelte-kit-emolike",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
@@ -23,13 +23,13 @@
 		"svelte-preprocess": "^4.7.4",
 		"tailwindcss": "^2.2.4",
 		"tslib": "^2.3.0",
-		"typescript": "^4.3.5",
-		"@toast-ui/editor": "^3.0.1"
+		"typescript": "^4.3.5"
 	},
 	"type": "module",
 	"dependencies": {
 		"@toast-ui/editor": "^3.0.1",
-		"jodit": "^3.7.1",
-		"octokat": "^0.10.0"
+		"jodit": "^3.7.2",
+		"octokat": "^0.10.0",
+		"svelte-multiselect": "^1.1.9"
 	}
 }

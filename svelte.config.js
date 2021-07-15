@@ -22,7 +22,7 @@ const config = {
 				target:  'webworker'
 			},
 			optimizeDeps: {
-			  include: ['@toast-ui/editor']
+				include: []
 			}
 		}
 	}

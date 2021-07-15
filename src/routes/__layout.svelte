@@ -11,7 +11,7 @@
 
 <div class="h-screen flex flex-row overflow-hidden">
 	<Nav />
-	<main class={"h-screen overflow-y-scroll " + ($showMenu? 'hidden': 'w-full') }>
+	<main class={"h-screen overflow-y-scroll sm:block w-full " + ($showMenu? 'hidden': 'block') }>
 		<slot />
 	</main>
 </div>

@@ -32,7 +32,7 @@
 	$: resetlist(selectedCategory);
 </script>
 
-<button on:click={toggleMenu} class="absolute top-0 right-0"
+<button on:click={toggleMenu} class="absolute top-0 right-0 sm:hidden"
 	><img src="/assets/icons/menu.webp" alt="sidebar" /></button
 >
 <div class={$showMenu ? 'block w-full' : 'hidden sm:block w-1/2 2xl:w-5/12'}>

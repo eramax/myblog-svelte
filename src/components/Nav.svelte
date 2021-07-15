@@ -41,7 +41,7 @@
   
     <div class="h-full capitalize bg-gray-800 text-gray-300 flex flex-col overflow-y-scroll w-4/12 	">
       <img class="rounded-full m-2 "  alt="Ahmed Morsi" src="/assets/icons/me2.webp" />
-      <a href="/editor">
+      <a href="/editor/new">
         <h6 class="font-bold text-center mb-2 ">AHMED MORSI</h6>
       </a>
       <ul class="w-full mb-2">
@@ -60,7 +60,7 @@
     <div class="flex flex-wrap flex-col h-full overflow-y-scroll overflow-x-hidden bg-white text-black w-8/12">
       <ul bind:this={catlist} class="w-full pb-8 ">
         {#each $BlogStore.posts.filter(p => p[3].includes(selectedCategory)) as post (post)}
-        <li class="w-full rounded overflow-hidden border shadow  px-1 mt-2 bg-gray-200">
+        <li class={'w-full rounded overflow-hidden border shadow  px-1 mt-2 ' + ($selectedPost == post[0] ? 'bg-gray-400' : 'bg-gray-200')}>
           <a href={'/' + post[0]}>
           <div class=" rounded-b p-1 flex flex-row ">
             <div class="w-2/12 h-10 bg-white text-sm  overflow-hidden ">

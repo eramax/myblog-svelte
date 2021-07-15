@@ -1,5 +1,5 @@
 <script>
-	import Nav from '../components/nav.svelte';
+	import Nav from '../components/Nav.svelte';
 	import { onMount } from 'svelte';
 	import { API, githubConfig } from '../Lib/config.js';
 	import { LoadIndex } from '../Lib/store.js';

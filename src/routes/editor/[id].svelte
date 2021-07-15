@@ -1,23 +1,29 @@
+<script context="module">
+    export async function load(ctx) {
+        let slug = ctx.page.params.id;
+        return { props: { slug }}
+    }
+</script>
+
 <script>
 	import { onMount } from 'svelte';
-	import { BlogStore } from '../Lib/store.js';
-	import { githubConfig, API } from '../Lib/config.js';
-	import { LoadPost, selectedPost } from '../Lib/store.js';
-	//import MultiSelect from '../components/MultiSelect.svelte';
-  import MultiSelect from 'svelte-multiselect';
- 	import 'jodit/build/jodit.min.css';
+	import { BlogStore } from '../../Lib/store.js';
+	import { githubConfig, API } from '../../Lib/config.js';
+	import { LoadPost } from '../../Lib/store.js';
+	import MultiSelect from '../../components/MultiSelect.svelte';
+	import 'jodit/build/jodit.min.css';
 
-	export let slug = undefined;
+	export let slug = 'new';
 	let post = undefined;
 	let access_token = localStorage.getItem('access_token') || '';
 	$: localStorage.setItem('access_token', access_token);
 
-	let selectedTags = [];
 	let editor;
 	let area;
 	let title;
 	let cats = [0];
 	let newCat = '';
+	$: console.log("cats",cats);
 
 	async function save() {
 		if (editor.value && cats && title && access_token) {
@@ -50,7 +56,7 @@
 				change: function (n) {}
 			}
 		});
-		if (slug) {
+		if (slug && slug !== 'new') {
 			post = await LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
 			if (post) {
 				editor.value = post.content;
@@ -83,14 +89,19 @@
 
 		<textarea bind:this={area} />
 
-		<div class="w-full flex mb-6">
+		<div class="w-full flex mt-4 mb-6">
 			<div class="w-32">
 				<label class="block text-gray-500 font-bold mb-1 pr-4" for="title"> Tags </label>
 			</div>
-			<div class="w-full">
-        <MultiSelect bind:cats options={$BlogStore.cats.map(c => c.name)} />
-
-			</div>
+			{#if $BlogStore.cats.length > 0}
+				<div class="w-full">
+					<MultiSelect id="tags" bind:value={cats}>
+						{#each $BlogStore.cats as cat}
+							<option value={cat.id}>{cat.name}</option>
+						{/each}
+					</MultiSelect>
+				</div>
+			{/if}
 		</div>
 
 		<div class="w-full flex mb-6">

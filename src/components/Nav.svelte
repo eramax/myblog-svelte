@@ -42,10 +42,10 @@
 				<li on:click={loadLive} class="hover:bg-gray-400">
 					<img
 						src={md.icon}
+						alt={md.name}
 						class={`text-white font-bold p-2 rounded mb-2  ${
 							mode == md.name ? 'bg-gray-500' : ''
 						} `}
-						alt=""
 					/>
 				</li>
 			{/each}
@@ -54,7 +54,7 @@
 		<div
 			class="h-full capitalize bg-gray-800 text-gray-300 flex flex-col overflow-y-scroll w-4/12 	"
 		>
-			<img class="rounded-full m-2 " alt="Ahmed Morsi" src="/assets/icons/me2.webp" />
+			<img class="rounded-full m-2 " alt="Ahmed Morsi" src="/assets/icons/me4.webp" />
 			<a href="/editor/new">
 				<h6 class="font-bold text-center mb-2 ">AHMED MORSI</h6>
 			</a>

@@ -5,29 +5,28 @@
         let slug = ctx.page.params.id;
         selectedPost.set(slug);
         showMenu.set(false);
-        let promise = LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
-        return { props: { promise }}
+        let post = await LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
+        return { props: { post }}
     }
 </script>
 <script>
     import { fly } from "svelte/transition";
     import '../global.css'
 
-    export let promise;
+    export let post;
 
 </script>
 
 <svelte:head>
-	<title>Eramax blog</title>
+	<title> {post.title}</title>
 </svelte:head>
 
-{#if promise}
-{#await promise then post}
+{#if post}
   <article class="w-full" in:fly={{ x: 100, y: 0 }}>
     <header class="border-b-2 border-yellow-500 p-4">
-      <div class="capitalize text-3xl font-bold mb-2 ">
+      <h1 class="capitalize text-3xl font-bold mb-2 ">
         {post.title}
-      </div>
+      </h1>
       <span>{new Date(post.date * 1000).toDateString()}</span>
       <a href={`/editor/${post.slug}`}>Edit</a>
     </header>
@@ -35,5 +34,4 @@
       {@html post.content}
     </section>
   </article>
-{/await}
 {/if}

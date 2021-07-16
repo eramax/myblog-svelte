@@ -46,7 +46,7 @@ export const BlogStore = {
     let files = []
     console.table(post)
     if (!post.slug)
-      post.slug = `${generateSlug(post.title)}_${generateId(4)}`.toLowerCase()
+      post.slug = `${generateSlug(post.title)}-${generateId(4)}`.toLowerCase()
 
     var container = document.createElement('div')
     container.innerHTML = post.content

@@ -5,11 +5,13 @@
     }
 </script>
 
+
 <script>
 	import { onMount } from 'svelte';
 	import { BlogStore } from '$lib/store.js';
 	import { githubConfig, API } from '$lib/config.js';
 	import { LoadPost } from '$lib/store.js';
+	
 	import 'jodit/build/jodit.min.css';
 
 	export let slug = 'new';
@@ -23,25 +25,8 @@
 	let cats = [0];
 	let newCat = '';
 
-	async function save() {
-		if (editor.value && cats && title && access_token) {
-			if (newCat) {
-				let catId = BlogStore.addCategory(newCat);
-				cats.indexOf(catId) === -1 && cats.push(catId);
-			}
-			post = {
-				date: (post && post.date) || Math.floor(Date.now() / 1000),
-				cats: cats || [0],
-				content: editor.value,
-				title: title,
-				slug: (post && post.slug) || undefined
-			};
-			await BlogStore.savePost(post);
-		}
-	}
-
-
 	onMount(async () => {
+		let {Jodit} = (await import('jodit')).default
 		editor = Jodit.make(area, {
 			askBeforePasteHTML: false,
 			processPasteHTML: true,
@@ -64,6 +49,23 @@
 			}
 		}
 	});
+
+	async function save() {
+		if (editor.value && cats && title && access_token) {
+			if (newCat) {
+				let catId = BlogStore.addCategory(newCat);
+				cats.indexOf(catId) === -1 && cats.push(catId);
+			}
+			post = {
+				date: (post && post.date) || Math.floor(Date.now() / 1000),
+				cats: cats || [0],
+				content: editor.value,
+				title: title,
+				slug: (post && post.slug) || undefined
+			};
+			await BlogStore.savePost(post);
+		}
+	}
 </script>
 
 <section class="w-full">

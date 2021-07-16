@@ -14,7 +14,7 @@
 	});
 </script>
 
-<div class="h-screen w-full flex flex-row overflow-hidden">
+<div class="mx-auto h-screen w-full flex flex-row overflow-hidden maxx">
 	<button on:click={toggleMenu} class="absolute top-0 right-0 sm:hidden"
 		><img src="/assets/icons/menu.webp" alt="sidebar" /></button
 	>
@@ -30,4 +30,6 @@
 	@tailwind base;
 	@tailwind components;
 	@tailwind utilities;
+
+	.maxx {max-width: 1920px;}
 </style>

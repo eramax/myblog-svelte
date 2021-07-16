@@ -7,9 +7,9 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import { BlogStore } from '../../Lib/store.js';
-	import { githubConfig, API } from '../../Lib/config.js';
-	import { LoadPost } from '../../Lib/store.js';
+	import { BlogStore } from '$lib/store.js';
+	import { githubConfig, API } from '$lib/config.js';
+	import { LoadPost } from '$lib/store.js';
 	import 'jodit/build/jodit.min.css';
 
 	export let slug = 'new';

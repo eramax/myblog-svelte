@@ -1,8 +1,8 @@
 <script>
-	import Nav from '../components/Nav.svelte';
 	import { onMount } from 'svelte';
-	import { API, githubConfig } from '../Lib/config.js';
-	import { LoadIndex, showMenu } from '../Lib/store.js';
+	import Nav from '../components/Nav.svelte';
+	import { API, githubConfig } from '$lib/config.js';
+	import { LoadIndex, showMenu } from '$lib/store.js';
 	const toggleMenu = () => {
 		showMenu.set(!$showMenu);
 	};

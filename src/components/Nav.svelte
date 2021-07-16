@@ -1,5 +1,5 @@
 <script>
-	import { BlogStore, selectedPost, showMenu } from '../Lib/store';
+	import { BlogStore, selectedPost, showMenu } from '$lib/store';
 
 	export let hideSidebar = false;
 	let selectedCategory = 0;

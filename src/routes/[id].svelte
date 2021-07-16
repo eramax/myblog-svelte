@@ -1,6 +1,6 @@
 <script context="module">
-	import { githubConfig, API } from '../Lib/config.js';
-	import { LoadPost, selectedPost, showMenu } from '../Lib/store.js';
+	import { githubConfig, API } from '$lib/config.js';
+	import { LoadPost, selectedPost, showMenu } from '$lib/store.js';
 	export async function load(ctx) {
 		let slug = ctx.page.params.id;
 		selectedPost.set(slug);

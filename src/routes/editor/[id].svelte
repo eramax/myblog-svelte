@@ -21,7 +21,6 @@
 	let area;
 	let title;
 	let cats = [0];
-
 	let newCat = '';
 
 	async function save() {
@@ -101,7 +100,6 @@
 				  <span class="ml-2">{cat.name}</span>
 				</label>
 			  </div>
-
 		  {/each}
 		</div>
 		</div>

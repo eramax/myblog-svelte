@@ -7,8 +7,6 @@
 		showMenu.set(!$showMenu);
 	};
 
-	$: console.log($showMenu);
-
 	onMount(async function () {
 		await LoadIndex(`${API}${githubConfig.indexfile}`);
 	});

@@ -6,7 +6,7 @@
 			"headers" :[
 				{
 					"key": "Content-security-Policy",
-					"value":"default-src 'self' ; img-src 'self' data:; script-src 'self' 'unsafe-eval';style-src 'self' 'unsafe-inline'"  
+					"value":"default-src 'self' ; img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"  
 				},
 				{
 					"key": "Referrer-policy" ,

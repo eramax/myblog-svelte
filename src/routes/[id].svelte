@@ -26,13 +26,12 @@
 	});
 
 	onMount(async function () {
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'G-45JQ4XHMM6');
-    window.art = art;
+		// window.dataLayer = window.dataLayer || [];
+		// function gtag() {
+		// 	dataLayer.push(arguments);
+		// }
+		// gtag('js', new Date());
+		// gtag('config', 'G-45JQ4XHMM6');
 		
 	});
 </script>

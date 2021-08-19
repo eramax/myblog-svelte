@@ -19,7 +19,7 @@
 	<div class={'sm:block w-full sm:w-1/2 2xl:w-4/12 ' + ($showMenu ? 'block' : 'hidden')}>
 		<Nav />
 	</div>
-	<main class={'overflow-y-scroll sm:block w-full md:w-1/2 2xl:w-8/12 ' + ($showMenu ? 'hidden' : 'block')}>
+	<main class={'overflow-y-scroll sm:block w-full lg:w-1/2 2xl:w-8/12 ' + ($showMenu ? 'hidden' : 'block')}>
 		<slot />
 	</main>
 </div>

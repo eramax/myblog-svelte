@@ -19,7 +19,7 @@
 		"eslint": "^7.30.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.0",
-		"jodit": "^3.7.2",
+		"jodit": "^3.8.8",
 		"octokat": "^0.10.0",
 		"prettier": "~2.3.2",
 		"prettier-plugin-svelte": "^2.3.1",

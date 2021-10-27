@@ -6,7 +6,7 @@
 			"headers" :[
 				{
 					"key": "Content-security-Policy",
-					"value" : "img-src 'self' data:; default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'worker-src' 'unsafe-eval' http://cdnjs.cloudflare.com https://raw.githubusercontent.com; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval'  http://cdnjs.cloudflare.com https://raw.githubusercontent.com"
+					"value":"default-src 'self' data: gap: https://raw.githubusercontent.com 'unsafe-eval'; img-src * data: blob: 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; frame-src *;connect-src * 'unsafe-inline';"  
 				},
 				{
 					"key": "Referrer-policy" ,

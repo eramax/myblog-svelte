@@ -494,6 +494,11 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
+core-js@^3.21.1:
+  version "3.21.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.21.1.tgz#f2e0ddc1fc43da6f904706e8e955bc19d06a0d94"
+  integrity sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==
+
 cosmiconfig@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.0.0.tgz#ef9b44d773959cae63ddecd122de23853b60f8d3"
@@ -1053,12 +1058,13 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-jodit@^3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/jodit/-/jodit-3.7.2.tgz#c1d0c9b715bb7b847c219fb1ada3de77ec977dfe"
-  integrity sha512-Jn/3z3XvCgcnkZBrckaIQ/B4CLlQkrLraU94eqlP2H0zYAMJpPpyRQjutgXWLASKfquuLCykVkvIzFfz10mMEA==
+jodit@^3.8.8:
+  version "3.16.5"
+  resolved "https://registry.yarnpkg.com/jodit/-/jodit-3.16.5.tgz#fd10e4688a77d55d74132aff27a3375627020feb"
+  integrity sha512-8v7lgPKO9kANoKggjnHgIolEeKCl7gCqWmK4gsoHpSBuTyb0WngfvNkHNdaFKaaC1Em2irMyP1PV7grQYZNBGQ==
   dependencies:
     autobind-decorator "^2.4.0"
+    core-js "^3.21.1"
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -1195,9 +1201,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.1.1:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 modern-normalize@^1.1.0:
   version "1.1.0"

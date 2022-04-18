@@ -1,8 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
-	import Nav from '../components/Nav.svelte';
 	import { API, githubConfig } from '$lib/config.js';
 	import { LoadIndex, showMenu } from '$lib/store.js';
+	import Nav from '$lib/nav/Nav.svelte';
+	
+	import '../app.css';
 	const toggleMenu = () => {
 		showMenu.set(!$showMenu);
 	};
@@ -23,11 +25,3 @@
 		<slot />
 	</main>
 </div>
-
-<style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
-
-	.maxx {max-width: 1920px;}
-</style>

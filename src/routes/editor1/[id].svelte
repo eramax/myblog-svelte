@@ -10,40 +10,43 @@
   import { BlogStore } from "$lib/store.js";
   import { githubConfig, API } from "$lib/config.js";
   import { LoadPost } from "$lib/store.js";
-  import "@toast-ui/editor/dist/toastui-editor.css"; // Editor's Style
-  import Editor from "@toast-ui/editor";
-  export let slug = "new";
+  import { Jodit } from "jodit";
+  import "jodit/build/jodit.min.css";
 
-  var area;
-  var editor;
-  let title;
-  let cats = [0];
-  let newCat = "";
-  let content = "";
+  export let slug = "new";
   let post = undefined;
   let access_token = localStorage.getItem("access_token") || "";
   $: localStorage.setItem("access_token", access_token);
 
+  let editor;
+  let area;
+  let title;
+  let cats = [0];
+  let newCat = "";
+
   onMount(async () => {
+    editor = Jodit.make(area, {
+      askBeforePasteHTML: false,
+      processPasteHTML: true,
+      removeEmptyBlocks: false,
+      defaultActionOnPaste: "insert_clear_html",
+      height: "60vh",
+      uploader: {
+        insertImageAsBase64URI: true,
+      },
+    });
     if (slug && slug !== "new") {
       post = await LoadPost(`${API}${githubConfig.postdir}${slug}.json`);
       if (post) {
-        content = post.content;
+        editor.value = post.content;
         title = post.title;
         cats = post.cats;
       }
     }
-    editor = new Editor({
-      el: area,
-      previewStyle: "vertical",
-      height: "500px",
-      initialValue: content,
-    });
-    window.ed = editor;
   });
 
   async function save() {
-    if (editor && cats && title && access_token) {
+    if (editor.value && cats && title && access_token) {
       if (newCat) {
         let catId = BlogStore.addCategory(newCat);
         cats.indexOf(catId) === -1 && cats.push(catId);
@@ -51,7 +54,7 @@
       post = {
         date: (post && post.date) || Math.floor(Date.now() / 1000),
         cats: cats || [0],
-        content: editor.getHTML(),
+        content: editor.value,
         title: title,
         slug: (post && post.slug) || undefined,
       };
@@ -65,7 +68,7 @@
     <div class="capitalize text-3xl font-bold mb-2 ">Post Editor</div>
   </header>
 
-  <form class="w-full py-4 px-8 flex flex-col">
+  <form class="w-full py-4 px-8">
     <div class="w-full flex mb-6">
       <div class="w-32">
         <label class="block text-gray-500 font-bold mb-1 pr-4" for="title">
@@ -82,7 +85,7 @@
       </div>
     </div>
 
-    <div bind:this={area} />
+    <textarea id="editor" bind:this={area} />
 
     <div class="w-full flex mt-4 mb-6">
       <div class="w-32">
